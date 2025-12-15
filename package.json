@@ -1,0 +1,11 @@
+{
+    "name": "th-story-content",
+    "private": true,
+    "scripts": {
+        "test": "node scripts/validate-public-content.mjs ./content"
+    },
+    "dependencies": {
+        "gray-matter": "^4.0.3",
+        "zod": "^3.21.4"
+    }
+}

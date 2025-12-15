@@ -1,0 +1,29 @@
+name: Validate Content Structure
+on:
+  push:
+    branches: [ "main", "master" ]
+    paths:
+      - 'content/**/*.md'
+  pull_request:
+    branches: [ "main", "master" ]
+    paths:
+      - 'content/**/*.md'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install gray-matter zod
+
+    - name: Run Validation Script
+      run: node scripts/validate-public-content.mjs ./content
