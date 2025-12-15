@@ -77,7 +77,7 @@ async function validateFile(filePath, collection) {
   try {
     const content = await readFile(filePath, 'utf8');
     const { data } = matter(content);
-    
+
     const schema = schemas[collection];
     if (!schema) {
       console.warn(`⚠️ Pas de schéma pour la collection: ${collection}`);
@@ -90,7 +90,7 @@ async function validateFile(filePath, collection) {
       console.error(result.error.issues);
       return false;
     }
-    
+
     console.log(`✅ ${filePath} est valide.`);
     return true;
   } catch (err) {
@@ -105,17 +105,17 @@ async function scanDirectory(dir) {
 
   for (const entry of entries) {
     const fullPath = join(dir, entry.name);
-    
+
     if (entry.isDirectory()) {
       // Le nom du dossier correspond souvent à la collection (ex: content/services)
       // Si on est dans content/services, les fichiers dedans sont des services
       const collectionName = entry.name;
       const subEntries = await readdir(fullPath, { withFileTypes: true });
-      
+
       for (const sub of subEntries) {
         if (sub.isFile() && extname(sub.name) === '.md' && !sub.name.startsWith('_')) {
-           const fileValid = await validateFile(join(fullPath, sub.name), collectionName);
-           if (!fileValid) isValid = false;
+          const fileValid = await validateFile(join(fullPath, sub.name), collectionName);
+          if (!fileValid) isValid = false;
         }
       }
     }
