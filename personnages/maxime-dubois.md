@@ -12,6 +12,7 @@ career:
     start: 06/05/2025
     end: 04/06/2025
 hrp: 
+    twitch: Delta_852
 ---
 
 écrire des infos
