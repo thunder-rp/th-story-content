@@ -1,7 +1,7 @@
 ---
 title: Los Santos County Sheriff
 name: Los Santos County Sheriff
-type: police
+type: FDO
 status: actif
 director: William Howard
 directorLabel: Sheriff (Lead)
